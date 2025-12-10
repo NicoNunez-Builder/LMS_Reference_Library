@@ -22,6 +22,12 @@ from app.routers.documents import (
     scrape,
     crawl,
 )
+from app.routers.ai import (
+    chat,
+    embed,
+    clean,
+    advanced_clean,
+)
 
 
 @asynccontextmanager
@@ -81,6 +87,12 @@ app.include_router(download.router, prefix="/documents/download", tags=["Documen
 app.include_router(parse.router, prefix="/documents/parse", tags=["Documents"])
 app.include_router(scrape.router, prefix="/documents/scrape", tags=["Documents"])
 app.include_router(crawl.router, prefix="/documents/crawl", tags=["Documents"])
+
+# AI routers
+app.include_router(chat.router, prefix="/ai/chat", tags=["AI"])
+app.include_router(embed.router, prefix="/ai/embed", tags=["AI"])
+app.include_router(clean.router, prefix="/ai/clean", tags=["AI"])
+app.include_router(advanced_clean.router, prefix="/ai/advanced-clean", tags=["AI"])
 
 
 @app.get("/")
