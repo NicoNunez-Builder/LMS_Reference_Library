@@ -16,6 +16,12 @@ from app.routers.search import (
     unicourt,
     combined,
 )
+from app.routers.documents import (
+    download,
+    parse,
+    scrape,
+    crawl,
+)
 
 
 @asynccontextmanager
@@ -69,6 +75,12 @@ app.include_router(federalregister.router, prefix="/search/federalregister", tag
 app.include_router(loc.router, prefix="/search/loc", tags=["Search"])
 app.include_router(unicourt.router, prefix="/search/unicourt", tags=["Search"])
 app.include_router(combined.router, prefix="/search/combined", tags=["Search"])
+
+# Document processing routers
+app.include_router(download.router, prefix="/documents/download", tags=["Documents"])
+app.include_router(parse.router, prefix="/documents/parse", tags=["Documents"])
+app.include_router(scrape.router, prefix="/documents/scrape", tags=["Documents"])
+app.include_router(crawl.router, prefix="/documents/crawl", tags=["Documents"])
 
 
 @app.get("/")
