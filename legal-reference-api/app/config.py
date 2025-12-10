@@ -18,6 +18,7 @@ class Settings(BaseSettings):
     google_search_engine_id: str = ""
     youtube_api_key: str = ""
     courtlistener_api_token: str = ""
+    congress_api_key: str = ""
     firecrawl_api_key: str = ""
     unicourt_client_id: str = ""
     unicourt_client_secret: str = ""

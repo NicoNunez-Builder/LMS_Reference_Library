@@ -4,6 +4,18 @@ from contextlib import asynccontextmanager
 
 from app.config import get_settings
 from app.routers import resources, categories
+from app.routers.search import (
+    google,
+    youtube,
+    books,
+    openlibrary,
+    courtlistener,
+    congress,
+    federalregister,
+    loc,
+    unicourt,
+    combined,
+)
 
 
 @asynccontextmanager
@@ -45,6 +57,18 @@ app.add_middleware(
 # Include routers
 app.include_router(resources.router, prefix="/resources", tags=["Resources"])
 app.include_router(categories.router, prefix="/categories", tags=["Categories"])
+
+# Search routers
+app.include_router(google.router, prefix="/search/google", tags=["Search"])
+app.include_router(youtube.router, prefix="/search/youtube", tags=["Search"])
+app.include_router(books.router, prefix="/search/books", tags=["Search"])
+app.include_router(openlibrary.router, prefix="/search/openlibrary", tags=["Search"])
+app.include_router(courtlistener.router, prefix="/search/courtlistener", tags=["Search"])
+app.include_router(congress.router, prefix="/search/congress", tags=["Search"])
+app.include_router(federalregister.router, prefix="/search/federalregister", tags=["Search"])
+app.include_router(loc.router, prefix="/search/loc", tags=["Search"])
+app.include_router(unicourt.router, prefix="/search/unicourt", tags=["Search"])
+app.include_router(combined.router, prefix="/search/combined", tags=["Search"])
 
 
 @app.get("/")
